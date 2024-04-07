@@ -1,66 +1,86 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Instalacja Docker'a na Windowsie
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+1. Uruchom PowerShell'a w trybie administratora
 
-## About Laravel
+2. Włącz WSL 
+```bash
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+```
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+3. Włącz Virtual Machine Platform
+```bash
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+4. Ustaw WSL na wersje 2
+```bash 
+wsl --set-default-version 2
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+5. Zainstaluj WSL z GNU/Linux Ubuntu
+```bash
+wsl.exe --install
+```
 
-## Learning Laravel
+6. Stwórz nowego użytkownika (podaj nazwę i hasło)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+7. Zaktualizuj GNU/Linux ubuntu
+```bash
+sudo apt update ; sudo apt upgrade
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+8. Zainstaluj Docker'a
+```bash
+sudo chmod +x ./install-docker
+./install-docker
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+9. Sprawdź, czy wszystko działa
+```bash
+docker run hello-world
+```
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+10. Sklonuj repozytorium 
+```bash
+git clone https://github.com/PrabuckiDominik/2024-ppsi.git
+```
 
-### Premium Partners
+11. Przejdź do folderu z projektem
+```bash
+cd steam-budy
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+12. Zminimalizuj terminal i otwórz Visual Studio Code
+13. Dodaj rozszerzenia WSL i Docker, autorstwa Microsoft
+14. Zamknij Visual Studio Code, wróć do terminala z GNU/Linuksem
+15. Uruchom projekt w Visual Studio Code
+```bash
+code .
+```
+16. Zamknij terminal
+17. Uruchom terminal w Visual Studio Code (`ctrl` + `~`)
+18. Zbuduj obrazy Docker'a
+```bash
+docker compose build  
+```
+19. Stwórz plik .env i dostosuj jego konfigurację.
+```bash
+cp .env.example .env
+```
+20. Uruchom Docker'a
+```bash
+docker compose up -d
+```
+21. Po zakończeniu procesu uruchamiania projekt będzie dostępny pod adresem [http://localhost](http://localhost).
 
-## Contributing
+22. Konfiguracja GIT'a:
+```bash
+git config --global user.name "Imie Nazwisko"
+git config --global user.email "addres@email.xyz"
+sudo apt install gh
+gh auth login
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Windows Pro
+1. Jeżeli używasz Windows w wersji Pro, możesz użyć Docker Desktop. Powinno działać równie wydajnie jak na WSL'ce czy Linuxie.
