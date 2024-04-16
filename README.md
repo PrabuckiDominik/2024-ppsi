@@ -48,7 +48,7 @@ git clone https://github.com/PrabuckiDominik/2024-ppsi.git
 
 11. Przejdź do folderu z projektem
 ```bash
-cd steam-budy
+cd 2024-ppsi
 ```
 
 12. Zminimalizuj terminal i otwórz Visual Studio Code
