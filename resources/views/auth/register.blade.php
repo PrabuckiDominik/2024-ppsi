@@ -1,7 +1,7 @@
 <form action="{{ route('register') }}" method="post">
     @csrf
     email: <input type="email" name="email" id="email">
-    @error('csrf')
+    @error('email')
         {{$message}}
     @enderror
     <br>
