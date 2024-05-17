@@ -78,8 +78,19 @@ services:
         volumes:
             - .:/app
         networks:
+            - app-net           
+    pgadmin:
+        image: dpage/pgadmin4
+        container_name: pgadmin-staffmaster
+        ports:
+            - "8888:80"
+        networks:
             - app-net
-
+        environment:
+            PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+            PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+        volumes:
+            - pgadmin_data:/var/lib/pgadmin 
 networks:
     app-net:
         driver: bridge
@@ -87,3 +98,4 @@ networks:
 volumes:
     db_data:
     redis_data:
+    pgadmin_data:
