@@ -2,16 +2,15 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LeaveController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 
-Route::get('register', [AuthController::class, 'register'])->name('register');
-Route::post('register', [AuthController::class, 'store']);
-Route::get('login', [AuthController::class, 'login'])->name('login');
-Route::post('login', [AuthController::class, 'authenticate']);
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+Route::resource('leaves', LeaveController::class)
+    ->only(['index', 'store', 'show', 'destroy'])
+    ->middleware('auth'); 
 
 Route::get('/', function () {
     return view('index');
@@ -20,3 +19,5 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('welcome');
 });
+
+require __DIR__.'/auth.php';

@@ -6,6 +6,8 @@
         @csrf
         <button type="submit">logout</button>
     </form>
+    <br>
+    <a href="{{ route('leaves.index') }}">Leaves</a>
 @endauth
 
 @guest
