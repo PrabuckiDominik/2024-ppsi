@@ -9,13 +9,13 @@ Lista pracowników
         <th>Państwo</th>
         <th>Miasto</th>
         <th>Kod Pocztowy</th>
-        <th>Adres</th>
+        <th>Ulica</th>
+        <th>Budynek</th>
+        <th>Mieszkanie</th>
         <th>Stanowisko</th>
         <th>Data urodzenia</th>
         <th>Data zatrudnienia</th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th>Edytuj</th>
     </tr>
     @foreach ($employees as $employee)
         <tr>
@@ -26,10 +26,15 @@ Lista pracowników
             <th>{{ $employee->country }}</th>
             <th>{{ $employee->city }}</th>
             <th>{{ $employee->zipCode }}</th>
-            <th>{{ $employee->street . ' ' . $employee->buildingNumber . '/' . $employee->apartmentNumber}}</th>
+            <th>{{ $employee->street}}</th>
+            <th>{{ $employee->buildingNumber}}</th>
+            <th>{{ $employee->apartmentNumber}}</th>
             <th>{{ $employee->position->name }}</th>
             <th>{{ $employee->dateOfBirth }}</th>
             <th>{{ $employee->hireDate }}</th>
+            <th>
+                <a href="{{ route('employees.edit', $employee) }}">Edytuj</a>
+            </th>
         </tr>
     @endforeach
 </table>

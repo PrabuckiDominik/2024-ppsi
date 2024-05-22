@@ -21,6 +21,11 @@ Route::get('/dashboard', function () {
     return view('welcome');
 });
 
-Route::get('employees', [EmployeesController::class, 'index'])->name('employees.index')->middleware('auth'); ;
+/* Route::get('employees', [EmployeesController::class, 'index'])->name('employees.index')->middleware('auth'); ;
+Route::get('employees/{employee}/edit', [EmployeesController::class, 'index'])->name('employees.index')->middleware('auth'); ; */
+
+Route::resource('employees', EmployeesController::class)
+    ->only(['index', 'edit', 'update'])
+    ->middleware('auth'); 
 
 require __DIR__.'/auth.php';
