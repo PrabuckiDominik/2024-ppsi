@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\LeaveController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -19,5 +20,7 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('welcome');
 });
+
+Route::get('employees', [EmployeesController::class, 'index'])->name('employees.index')->middleware('auth'); ;
 
 require __DIR__.'/auth.php';

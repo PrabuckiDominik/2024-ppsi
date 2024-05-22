@@ -7,7 +7,9 @@
         <button type="submit">logout</button>
     </form>
     <br>
-    <a href="{{ route('leaves.index') }}">Leaves</a>
+    <a href="{{ route('leaves.index') }}">Urlopy</a>
+    <br>
+    <a href="{{ route('employees.index') }}">Pracownicy</a>
 @endauth
 
 @guest

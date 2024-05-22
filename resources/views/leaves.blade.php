@@ -19,18 +19,17 @@
         <th>Anuluj urlop</th>
     </tr>
     @foreach ($leaves as $leave)
-    <tr>
-        <th>{{ $leave->user ? $leave->user->name : '---' }}</th>
-        <th>{{ $leave->start_date }}</th>
-        <th>{{ $leave->end_date }}</th>
-        <th>
-            <form method="POST" action="{{ route('leaves.destroy', $leave->id) }}">
-                @csrf
-                @method('delete')
-                <button> X </button>
-            </form>
-        </th>
-    </tr>
-@endforeach
-
+        <tr>
+            <th>{{ $leave->user ? $leave->user->name : '---' }}</th>
+            <th>{{ $leave->start_date }}</th>
+            <th>{{ $leave->end_date }}</th>
+            <th>
+                <form method="POST" action="{{ route('leaves.destroy', $leave->id) }}">
+                    @csrf
+                    @method('delete')
+                    <button> X </button>
+                </form>
+            </th>
+        </tr>
+    @endforeach
 </table>
