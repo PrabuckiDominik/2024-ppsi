@@ -1,21 +1,21 @@
 <form action="{{ route('register') }}" method="post">
     @csrf
-    email: <input type="email" name="email" id="email">
+    {{ __('auth.emailInput') }}: <input type="email" name="email" id="email">
     @error('email')
         {{$message}}
     @enderror
     <br>
-    username: <input type="text" name="name" id="name">
+    {{ __('auth.usernameInput') }}: <input type="text" name="name" id="name">
     @error('name')
         {{$message}}
     @enderror
     <br>
-    password: <input type="password" name="password" id="password">
+    {{ __('auth.passwordInput') }}: <input type="password" name="password" id="password">
     @error('password')
         {{$message}}
     @enderror
     <br>
-    confirm password: <input type="password" name="password_confirmation" id="password_confirmation">
+    {{ __('auth.confirmPasswordInput') }}: <input type="password" name="password_confirmation" id="password_confirmation">
     @error('password_confirmation')
         {{$message}}
     @enderror

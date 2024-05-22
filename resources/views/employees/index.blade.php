@@ -2,20 +2,21 @@ Lista pracowników
 
 <table>
     <tr>
-        <th>Imie</th>
-        <th>Nazwisko</th>
-        <th>Płeć</th>
-        <th>Numer telefonu</th>
-        <th>Państwo</th>
-        <th>Miasto</th>
-        <th>Kod Pocztowy</th>
-        <th>Ulica</th>
-        <th>Budynek</th>
-        <th>Mieszkanie</th>
-        <th>Stanowisko</th>
-        <th>Data urodzenia</th>
-        <th>Data zatrudnienia</th>
-        <th>Edytuj</th>
+        
+        <th>{{ __('employees.firstname') }}</th>
+        <th>{{ __('employees.lastname') }}</th>
+        <th>{{ __('employees.gender') }}</th>
+        <th>{{ __('employees.phoneNumber') }}</th>
+        <th>{{ __('employees.country') }}</th>
+        <th>{{ __('employees.city') }}</th>
+        <th>{{ __('employees.zipCode') }} </th>
+        <th>{{ __('employees.street') }}</th>
+        <th>{{ __('employees.buildingNumber') }}</th>
+        <th>{{ __('employees.apartmentNumber') }}</th>
+        <th>{{ __('employees.position') }}</th>
+        <th>{{ __('employees.dateOfBirth') }}</th>
+        <th>{{ __('employees.hireDate') }}</th>
+        <th>{{ __('employees.edit') }}</th>
     </tr>
     @foreach ($employees as $employee)
         <tr>
@@ -33,7 +34,7 @@ Lista pracowników
             <th>{{ $employee->dateOfBirth }}</th>
             <th>{{ $employee->hireDate }}</th>
             <th>
-                <a href="{{ route('employees.edit', $employee) }}">Edytuj</a>
+                <a href="{{ route('employees.edit', $employee) }}">{{ __('employees.edit') }}</a>
             </th>
         </tr>
     @endforeach

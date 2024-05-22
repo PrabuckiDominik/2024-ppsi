@@ -6,19 +6,19 @@ Pracownik
     @method('put')
     <table>
         <tr>
-            <th>Imie</th>
-            <th>Nazwisko</th>
-            <th>Płeć</th>
-            <th>Numer telefonu</th>
-            <th>Państwo</th>
-            <th>Miasto</th>
-            <th>Kod Pocztowy</th>
-            <th>Ulica</th>
-            <th>Numer bloku</th>
-            <th>Number mieszkania</th>
-            <th>Stanowisko</th>
-            <th>Data urodzenia</th>
-            <th>Data zatrudnienia</th>
+            <th>{{ __('employees.firstname') }}</th>
+            <th>{{ __('employees.lastname') }}</th>
+            <th>{{ __('employees.gender') }}</th>
+            <th>{{ __('employees.phoneNumber') }}</th>
+            <th>{{ __('employees.country') }}</th>
+            <th>{{ __('employees.city') }}</th>
+            <th>{{ __('employees.zipCode') }} </th>
+            <th>{{ __('employees.street') }}</th>
+            <th>{{ __('employees.buildingNumber') }}</th>
+            <th>{{ __('employees.apartmentNumber') }}</th>
+            <th>{{ __('employees.position') }}</th>
+            <th>{{ __('employees.dateOfBirth') }}</th>
+            <th>{{ __('employees.hireDate') }}</th>
         </tr>
         <tr>
             <th> <input type="text" name="firstname" id="firstname" value="{{ $employee->firstname }}"> </th>
@@ -36,5 +36,5 @@ Pracownik
             <th><input type="date" name="hireDate" id="hireDate" value="{{ $employee->hireDate }}"></th>
         </tr>
     </table>
-    <button type="submit">Aktualizuj dane pracownika</button>
+    <button type="submit">{{ __('employee.updateEmployeeData') }}</button>
 </form>

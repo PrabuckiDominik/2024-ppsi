@@ -1,21 +1,20 @@
 @include('shared.return-message')
 
 @auth
-    zalogowany jako {{ Auth::user()->email }}
+    {{ __('auth.loggedInAs') }} {{ Auth::user()->email }}
     <form action="{{ route('logout') }}" method="post">
         @csrf
-        <button type="submit">logout</button>
+        <button type="submit">{{ __('auth.logout') }}</button>
     </form>
     <br>
-    <a href="{{ route('leaves.index') }}">Urlopy</a>
+    <a href="{{ route('leaves.index') }}">{{ __('leaves.leaves') }}</a>
     <br>
-    <a href="{{ route('employees.index') }}">Pracownicy</a>
+    <a href="{{ route('employees.index') }}">{{ __('employees.employees') }}</a>
 @endauth
 
 @guest
-    guest
     <br>
-    <a href="{{ route('login') }}">login</a>
+    <a href="{{ route('login') }}">{{ __('auth.login') }}</a>
     <br>
-    <a href="{{ route('register') }}">register</a>
+    <a href="{{ route('register') }}">{{ __('auth.register') }}</a>
 @endguest

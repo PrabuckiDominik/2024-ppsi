@@ -1,11 +1,11 @@
 <form action="{{ route('login') }}" method="post">
     @csrf
-    email: <input type="text" name="email" id="email">
+    {{ __('auth.emailInput') }}: <input type="text" name="email" id="email">
     @error('email')
         {{$message}}
     @enderror
     <br>
-    password: <input type="password" name="password" id="password">
+    {{ __('auth.passwordInput') }}: <input type="password" name="password" id="password">
     @error('password')
         {{$message}}
     @enderror

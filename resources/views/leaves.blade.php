@@ -2,10 +2,10 @@
 
 <form action="{{ route('leaves.store') }}" method="post">
     @csrf
-    Data rozpoczęcia urlopu <br>
+    {{ __('leaves.startDate') }} <br>
     <input type="date" name="start_date" id="start_date">
     <br>
-    Data zakończenia urlopu <br>
+    {{ __('leaves.endDate') }} <br>
     <input type="date" name="end_date" id="end_date">
     <br>
     <input type="submit" name = "submit" value="Wypisz urlop">
@@ -13,10 +13,10 @@
 
 <table>
     <tr>
-        <th>Osoba</th>
-        <th>Data rozpoczęcia</th>
-        <th>Data zakończenia</th>
-        <th>Anuluj urlop</th>
+        <th>{{ __('leaves.firstnameAndLastname') }}</th>
+        <th>{{ __('leaves.startDate') }}</th>
+        <th>{{ __('leaves.endDate') }}</th>
+        <th>{{ __('leaves.cancelLeave') }}</th>
     </tr>
     @foreach ($leaves as $leave)
         <tr>
