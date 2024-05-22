@@ -3,6 +3,7 @@
 return [
 
     'employee_data_updated' => 'Te dane uwierzytelniające nie pasują do naszych rekordów.',
+    'employee_data_update' => 'Zaktualizuj dane',
     'firstname' => 'Imie',
     'lastname' => 'Nazwisko',
     'gender' => 'Płeć',

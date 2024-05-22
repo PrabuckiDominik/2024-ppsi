@@ -36,5 +36,5 @@ Pracownik
             <th><input type="date" name="hireDate" id="hireDate" value="{{ $employee->hireDate }}"></th>
         </tr>
     </table>
-    <button type="submit">{{ __('employee.updateEmployeeData') }}</button>
+    <button type="submit">{{ __('employees.employee_data_update') }}</button>
 </form>

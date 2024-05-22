@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
+
 
 class AuthController extends Controller
 {
@@ -27,10 +28,11 @@ class AuthController extends Controller
 
         if(auth()->attempt($validated)){
             request()->session()->regenerate();
+            Log::channel('auth')->info($validated['email'] . ' (ID:' . auth()->id() . ') Logged in');
             return redirect()->route('dashboard')->with('success', 'Logged in');
-            
         }
-
+        
+        Log::channel('auth')->info($validated['email'] . ' Failed to log in');
         return redirect()->route('login')->withErrors(
             [
                 'email' => "No matching user found with the provided email and password"
@@ -39,6 +41,8 @@ class AuthController extends Controller
     }
 
     public function logout(){
+        $userId = auth()->id();
+        Log::channel('auth')->info(auth()->user()->email . ' (ID:' . $userId . ') Logged out');
         auth()->logout();
 
         request()->session()->invalidate();
