@@ -10,6 +10,8 @@
     <a href="{{ route('leaves.index') }}">{{ __('leaves.leaves') }}</a>
     <br>
     <a href="{{ route('employees.index') }}">{{ __('employees.employees') }}</a>
+    <br>
+    <a href="{{ route('transactions.index') }}">Transactions</a>
 @endauth
 
 @guest
