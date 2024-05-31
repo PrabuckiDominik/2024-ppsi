@@ -62,7 +62,7 @@ code .
 17. Uruchom terminal w Visual Studio Code (`ctrl` + `~`)
 18. Zbuduj obrazy Docker'a
 ```bash
-docker compose build  
+docker compose build  
 ```
 19. Stwórz plik .env i dostosuj jego konfigurację.
 ```bash
@@ -70,7 +70,7 @@ cp .env.example .env
 ```
 20. Uruchom Docker'a
 ```bash
-docker compose up -d
+make dev
 ```
 21. Po zakończeniu procesu uruchamiania projekt będzie dostępny pod adresem [http://localhost](http://localhost).
 
@@ -81,6 +81,3 @@ git config --global user.email "addres@email.xyz"
 sudo apt install gh
 gh auth login
 ```
-
-# Windows Pro
-1. Jeżeli używasz Windows w wersji Pro, możesz użyć Docker Desktop. Powinno działać równie wydajnie jak na WSL'ce czy Linuxie.
