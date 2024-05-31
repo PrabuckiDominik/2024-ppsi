@@ -9,7 +9,6 @@ use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\TransactionsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 Route::post('/switch-language', [LaunguageController::class, 'switchLanguage'])->name('lang.switch');
 
@@ -25,7 +24,6 @@ Route::get('/dashboard', function () {
     return view('welcome');
 });
 
-
 Route::resource('employees', EmployeesController::class)
     ->only(['index', 'edit', 'update'])
     ->middleware('auth'); 
@@ -35,7 +33,6 @@ Route::resource('transactions', TransactionsController::class)
     ->middleware('auth');
 
 require __DIR__.'/auth.php';
-
 
 /* 
         $apiKey = env('ALPHA_VANTAGE_API_KEY');
