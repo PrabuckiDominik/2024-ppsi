@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommodityController;
+use App\Http\Controllers\LaunguageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeesController;
@@ -10,6 +11,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+Route::post('/switch-language', [LaunguageController::class, 'switchLanguage'])->name('lang.switch');
 
 Route::resource('leaves', LeaveController::class)
     ->only(['index', 'store', 'show', 'destroy'])

@@ -8,8 +8,11 @@
 </head>
 <body class="bg-blue-100 flex justify-center items-start sm:pt-3.5 h-screen">
     <div class="bg-white p-8 rounded w-full min-h-screen sm:min-h-0 max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl md:shadow-md relative">
-        <a href="{{ route('lang.switch', 'en') }}" class="absolute top-2 left-6 text-gray-800 text-sm font-medium underline">PL</a>
-        <a href="{{ route('lang.switch', 'en') }}" class="absolute top-2 left-16 text-gray-800 text-sm font-medium underline">EN</a>
+        <form action="{{ route('lang.switch', 'en') }}" method="post">
+            @csrf
+            <input type="submit" value="pl" name="language" class="absolute top-2 left-6 text-gray-800 text-sm font-medium underline">
+            <input type="submit" value="en" name="language" class="absolute top-2 left-16 text-gray-800 text-sm font-medium underline">
+        </form>
         
         
         
