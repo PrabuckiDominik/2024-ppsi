@@ -20,8 +20,13 @@ return [
     'passwordInput' => 'Password',
     'confirmPasswordInput' => 'Confirm Password',
     'loggedInAs' => 'Logged in as',
-    'logout' => 'Logout',
-    'login' => 'Login',
+    'logout' => 'Log out',
+    'login' => 'Log in',
+    'loginHeader' => 'Log In',
     'register' => 'Register',
+    'username' => 'Username',
+    'back' => 'Back',
+    'existingAccountPrmopt' => 'Already got an account? Log in.',
+    'notExistingAccountPrmopt' => "Don't have an account? Register.",
 
 ];
