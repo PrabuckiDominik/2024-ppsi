@@ -13,7 +13,7 @@
         <div class="text-white font-bold mb-4 sm:mb-0 sm:mr-4 flex flex-col sm:flex-row">
             <a href="{{ route('leaves.index') }}" class="text-white text-4xl sm:text-xl block sm:inline-block mb-4 sm:mb-0 mr-4 hover:text-indigo-400">{{ __('leaves.leaves') }}</a>
             <a href="{{ route('employees.index') }}" class="text-white text-4xl sm:text-xl block sm:inline-block mb-4 sm:mb-0 mr-4 hover:text-indigo-400">{{ __('employees.employees') }}</a>
-            <a href="{{ route('transactions.index') }}" class="text-white text-4xl sm:text-xl block sm:inline-block mb-4 sm:mb-0 hover:text-indigo-400">Transactions</a>
+            <a href="{{ route('transactions.index') }}" class="text-white text-4xl sm:text-xl block sm:inline-block mb-4 sm:mb-0 hover:text-indigo-400">{{ __('transactions.transaction') }}</a>
         </div>
         <form action="{{ route('logout') }}" method="post">
             @csrf
