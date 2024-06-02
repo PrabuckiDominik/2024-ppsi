@@ -35,6 +35,10 @@ Route::get('employees/{id}/create', [EmployeesController::class, 'create_from_us
 Route::resource('transactions', TransactionsController::class)
     ->only(['index', 'store'])
     ->middleware(['auth', 'verificated']); 
+    
+Route::get('/statistics', function () {
+    return view('statistics');
+})->name('notVerificated');
 
 require __DIR__.'/auth.php';
 
