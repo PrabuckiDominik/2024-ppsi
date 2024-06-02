@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Material;
+use App\Models\Position;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -21,5 +23,15 @@ class DatabaseSeeder extends Seeder
             'password' => env('ADMIN_PASSWORD'),
             'role' => 'admin'
         ]);
+
+        Position::factory()->create([
+            'section' => 'Biuro',
+            'name' => 'Kadry',
+            'grade' => '3'
+        ]);
+
+         Material::factory()->create([
+             'name' => 'Aluminium'
+         ]);
     }
 }
