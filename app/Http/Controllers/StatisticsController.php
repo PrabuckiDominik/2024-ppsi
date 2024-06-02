@@ -4,40 +4,64 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use App\Models\Transaction;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
 
 class StatisticsController extends Controller
 {
+    protected const TWO_HOUR_IN_SECOND = 7200;
     public function index(){
-
-        $materials = $this->getMaterialsStatistics();
-        $employeesCount = Employee::count();
-
-        $apiKey = env('ALPHA_VANTAGE_API_KEY');
-        $baseUrl = 'https://www.alphavantage.co/query';
-        $commodity = 'AAPL';
-
-        $response = Http::get($baseUrl, [
-            'function' => 'ALUMINUM',
-            'interval' => 'monthly',
-            'apikey' => $apiKey,
-        ]);
-
-        if ($response->successful()) {
-            $result = $response->json();
-            return view('statistics', compact('result', 'materials', 'employeesCount'));
-        }else{
-            return view('statistics', compact('materials', 'employeesCount'))->withErrors(
-                [
-                    'API' => "Couldnt load data from API"
-                ]
-            );;
+        $data = $this->statistics();
+        $json = $data->json;
+        $materials = $data->materials;
+        $employeesCount = $data->employeesCount;
+        if(array_key_exists('defaultValues', $json)){
+            session(['error' => 'Couldnt load data from API. Loaded default values']);
         }
+        return view('statistics', compact('data'));
     }
     public function statistics(){
-
+        $materials = $this->getMaterialsStatistics();
+        $employeesCount = Employee::count();
+        $json = Cache::remember('aluminum', $this::TWO_HOUR_IN_SECOND, function () {
+            $apiKey = env('ALPHA_VANTAGE_API_KEY');
+            $baseUrl = 'https://www.alphavantage.co/query';
+            
+            $response = Http::get($baseUrl, [
+                'function' => 'ALUMINUM',
+                'interval' => 'monthly',
+                'apikey' => $apiKey,
+            ]);
+            if ($response->successful()) {
+                $json = $response->json();
+                if(array_key_exists('Information', $json)){
+                    return [
+                        'defaultValues' => true,
+                        'name' => 'Price of aluminum',
+                        'interval' => 'Month',
+                        'unit' => 'Metric tone',
+                        'data' => [
+                            [
+                                'date' => '01.06.2024',
+                                'value' => '2501'
+                            ]
+                        ]
+                    ];
+                }
+                return $json;
+            }
+        });
+        return (object)[
+            'materials' => $materials,
+            'employeesCount' => $employeesCount,
+            'json' => $json
+        ];
+    }
+    public function simple_statistics(){
         $materials = $this->getMaterialsStatistics();
         $employeesCount = Employee::count();
         return [
@@ -53,6 +77,8 @@ class StatisticsController extends Controller
         $totalPurchaseCost = Transaction::where('type', 'buy')
             ->sum(DB::raw('"pricePerUnit" * "quantity"'));
         $totalSellCost = Transaction::where('type', 'sell')
+            ->sum(DB::raw('"pricePerUnit" * "quantity"'));
+        $totalQuantityByType = Transaction::select('type', DB::raw('SUM(quantity) as total_quantity'))
             ->sum(DB::raw('"pricePerUnit" * "quantity"'));
         $totalQuantityByType = Transaction::select('type', DB::raw('SUM(quantity) as total_quantity'))
             ->groupBy('type')

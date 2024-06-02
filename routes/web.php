@@ -38,8 +38,11 @@ Route::resource('transactions', TransactionsController::class)
 
 Route::get('/statistics', [StatisticsController::class, 'index'])
     ->name('statistics.index')
-    ->middleware(['auth', 'verificated']);
-
+    ->middleware(['auth', 'verificated']); 
+    
+Route::get('/api/simple_statistics', [StatisticsController::class, 'simple_statistics'])
+    ->name('statistics.simple-statistics');
+    
 Route::get('/api/statistics', [StatisticsController::class, 'statistics'])
     ->name('statistics.statistics');
 
