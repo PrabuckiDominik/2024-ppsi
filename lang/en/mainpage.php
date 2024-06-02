@@ -20,5 +20,8 @@ return [
     'createAccountDescription' => 'The application offers the possibility to create new user accounts. New users can register by providing the required information, email address, and password.',
     'loginLogoutDescription' => 'The application provides secure login and logout mechanisms. Users can log in by providing their credentials (email address and password).',
     'identifyUserDescription' => 'After logging in, the application identifies the logged-in user and adjusts the interface and available functions.',
+    'notVerified' => 'Your account is not verified.',
+    'notVerifiedMessage' => 'To display the content of this page, your account must be verified by the administration.'
+
 
 ];
