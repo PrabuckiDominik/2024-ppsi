@@ -7,15 +7,6 @@
 
 
 @section('content')
-<div class="min-h-full flex justify-center">
-    <div class="w-full max-w-4xl bg-white shadow-md rounded p-10 relative">
-        <div class="absolute top-2 right-6">
-            <form action="{{ route('lang.switch', 'en') }}" method="post" class="inline-block">
-                @csrf
-                <input type="submit" value="pl" name="language" class="text-gray-800 text-sm font-medium underline px-1 bg-transparent border-none">
-                <input type="submit" value="en" name="language" class="text-gray-800 text-sm font-medium underline px-1 bg-transparent border-none">
-            </form>
-        </div>
         <div class="space-y-6">
             <form action="{{ route('leaves.store') }}" method="post" class="space-y-4">
                 @csrf
@@ -69,7 +60,5 @@
             @endif
             
         </div>
-    </div>
-</div>
 
 @endsection
