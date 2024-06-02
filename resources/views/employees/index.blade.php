@@ -17,6 +17,7 @@ Lista pracowników
         <th>{{ __('employees.dateOfBirth') }}</th>
         <th>{{ __('employees.hireDate') }}</th>
         <th>{{ __('employees.edit') }}</th>
+        <th>{{ __('employees.email') }}</th>
     </tr>
     @foreach ($employees as $employee)
         <tr>
@@ -33,8 +34,31 @@ Lista pracowników
             <th>{{ $employee->position->name }}</th>
             <th>{{ $employee->dateOfBirth }}</th>
             <th>{{ $employee->hireDate }}</th>
+            <th>{{ $employee->user->email }}</th>
             <th>
                 <a href="{{ route('employees.edit', $employee) }}">{{ __('employees.edit') }}</a>
+            </th>
+        </tr>
+    @endforeach
+</table>
+
+<br><br>
+Niezweryfikowani użytkownicy
+
+<table>
+    <tr>
+        
+        <th>id</th>
+        <th>{{ __('employees.name') }}</th>
+        <th>{{ __('employees.email') }}</th>
+    </tr>
+    @foreach ($unverifiedUsers as $unverifiedUser)
+        <tr>
+            <th>{{ $unverifiedUser->id }}</th>
+            <th>{{ $unverifiedUser->name }}</th>
+            <th>{{ $unverifiedUser->email }}</th>
+            <th>
+                <a href="{{ route('employees.create_from_user', $unverifiedUser->id) }}">{{ __('employees.edit') }}</a>
             </th>
         </tr>
     @endforeach

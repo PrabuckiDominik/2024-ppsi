@@ -1,0 +1,2 @@
+
+twoje konto niejest zweryfikowane

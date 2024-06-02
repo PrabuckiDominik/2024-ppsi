@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('/switch-language', [LaunguageController::class, 'switchLanguage'])->name('lang.switch');
 
 Route::resource('leaves', LeaveController::class)
-    ->only(['index', 'store', 'show', 'destroy'])
-    ->middleware('auth'); 
+    ->only(['index', 'store', 'destroy'])
+    ->middleware(['auth', 'verificated']); 
 
 Route::get('/', function () {
     return view('index');
@@ -23,14 +23,18 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('welcome');
 });
+Route::get('/dashboard', function () {
+    return view('notVerificated');
+})->name('notVerificated');
 
 Route::resource('employees', EmployeesController::class)
-    ->only(['index', 'edit', 'update'])
-    ->middleware('auth'); 
+    ->only(['index', 'store', 'show', 'destroy', 'edit', 'update'])
+    ->middleware(['auth', 'verificated']); 
+Route::get('employees/{id}/create', [EmployeesController::class, 'create_from_user'])->name('employees.create_from_user');
     
 Route::resource('transactions', TransactionsController::class)
     ->only(['index', 'store'])
-    ->middleware('auth');
+    ->middleware(['auth', 'verificated']); 
 
 require __DIR__.'/auth.php';
 
@@ -52,4 +56,12 @@ require __DIR__.'/auth.php';
         }
 
         return view('commodity');      
+
+
+        name: {{$result['name']}} <br>
+interval {{$result['interval']}} <br>
+unit {{$result['unit']}} <br>
+date {{$result['data'][0]['date']}} <br>
+value {{$result['data'][0]['value']}} <br>
+
 */

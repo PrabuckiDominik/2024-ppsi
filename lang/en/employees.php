@@ -20,4 +20,6 @@ return [
     'updateEmployeeData' => 'Update Employee Data',
     'edit' => 'Edit',
     'employees' => 'Employees',
+    'email' => 'Email',
+    'name' => 'Name',
 ];
