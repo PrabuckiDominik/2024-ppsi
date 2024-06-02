@@ -7,28 +7,30 @@
 
 @auth
 <body class="bg-blue-100">
-    {{ __('auth.loggedInAs') }} {{ Auth::user()->email }}
-    <nav id="navbar" class="bg-gray-800 py-4 fixed w-full z-10 top-0">
+    <nav id="navbar" class="bg-gray-800 py-4 w-full z-10 top-0">
         <div class="container mx-auto flex justify-between items-center flex-col sm:flex-row px-4">
+            
             <div class="text-white font-bold mb-4 sm:mb-0 sm:mr-4 flex flex-col sm:flex-row">
+                
                 <a href="{{ route('dashboard') }}" class="text-white text-4xl sm:text-xl block sm:inline-block mb-4 sm:mb-0 hover:text-indigo-400 px-2">{{ __('mainpage.mainPage') }}</a>
                 <a href="{{ route('leaves.index') }}" class="text-white text-4xl sm:text-xl block sm:inline-block mb-4 sm:mb-0 mr-4 hover:text-indigo-400 px-2">{{ __('leaves.leaves') }}</a>
                 <a href="{{ route('employees.index') }}" class="text-white text-4xl sm:text-xl block sm:inline-block mb-4 sm:mb-0 mr-4 hover:text-indigo-400 px-2">{{ __('employees.employees') }}</a>
+                <a href="{{ route('statistics.index') }}" class="text-white text-4xl sm:text-xl block sm:inline-block mb-4 sm:mb-0 mr-4 hover:text-indigo-400 px-2">{{ __('statistics.statistics') }}</a>
                 <a href="{{ route('transactions.index') }}" class="text-white text-4xl sm:text-xl block sm:inline-block mb-4 sm:mb-0 hover:text-indigo-400 px-2">{{ __('transactions.transaction') }}</a>
+                
             </div>
-            <form action="{{ route('lang.switch', 'en') }}" method="post">
-                @csrf
-                <input type="submit" value="pl" name="language" class="absolute top-2 right-6 text-white text-sm font-medium underline bg-transparent border-none ">
-                <input type="submit" value="en" name="language" class="absolute top-2 right-16 text-white text-sm font-medium underline bg-transparent border-none ">
-            </form>
+            
             <form action="{{ route('logout') }}" method="post">
                 @csrf
                 <button type="submit" class="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">{{ __('auth.logout') }}</button>
             </form>
+            
         </div>
     </nav>
+
+
     <button id="hideButton" class="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-900 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 sm:hidden fixed top-4 right-4 z-20">
-        {{ __('Hide') }}
+        {{ __('mainpage.hide') }}
     </button>
     
     <style>
@@ -53,11 +55,7 @@
         });
     </script>
     
-    
-    
     @yield('content')
-
-
     
 </body>
 @endauth
