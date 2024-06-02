@@ -3,7 +3,6 @@
 Pracownik
 <form action="{{ route('employees.store') }}" method="post">
     @csrf
-    @dump($employee)
     <input type="hidden" name="user_id" value="{{ $employee->user_id }}">
     <table>
         <tr>
