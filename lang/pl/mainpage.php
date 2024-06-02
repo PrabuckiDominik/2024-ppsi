@@ -7,6 +7,14 @@ return [
     'or' => 'lub',
     'mainPage' => 'Strona Główna',
     'hide' => 'Ukryj',
+
+
+
+
+
+
+
+    'hello' => 'Witaj, ',
     'functionalities' => 'Funkcjonalności',
     'employeeManagement' => 'Zarządzanie Pracownikami',
     'editData' => 'Edytuj Dane',
@@ -20,6 +28,12 @@ return [
     'createAccountDescription' => 'Aplikacja oferuje możliwość utworzenia nowych kont użytkowników. Nowi użytkownicy mogą zarejestrować się, podając wymagane informacje, adres e-mail, hasło.',
     'loginLogoutDescription' => 'Aplikacja zapewnia bezpieczne mechanizmy logowania i wylogowania. Użytkownicy mogą logować się, podając swoje dane uwierzytelniające (adres e-mail i hasło).',
     'identifyUserDescription' => 'Po zalogowaniu się, aplikacja identyfikuje zalogowanego użytkownika i dostosowuje interfejs oraz dostępne funkcje.',
+    
+    
+    
+    
+    
+    
     'notVerified' => 'Twoje konto nie jest zweryfikowane.',
     'notVerifiedMessage' => 'Żeby wyświetlić zawartość tej strony twoje konto musi zostać zweryfikowane przez administracje.',
 

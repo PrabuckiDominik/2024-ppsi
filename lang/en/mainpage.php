@@ -7,6 +7,11 @@ return [
     'or' => 'or',
     'mainPage' => 'Main Page',
     'hide' => 'Hide',
+
+
+
+
+    'hello' => 'Hello, ',
     'functionalities' => 'Functionalities',
     'employeeManagement' => 'Employee Management',
     'editData' => 'Edit Data',
@@ -14,6 +19,12 @@ return [
     'createAccount' => 'Create Account',
     'loginLogout' => 'Login/Logout',
     'identifyUser' => 'Identify User',
+
+
+
+
+
+
     'employeeManagementDescription' => 'Allows viewing the list of employees, sorting and filtering data, and searching for specific individuals based on various criteria.',
     'editDataDescription' => 'The application allows editing employee data.',
     'addDataDescription' => 'The system enables adding new employees to the database.',
