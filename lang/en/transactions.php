@@ -2,13 +2,14 @@
 
 return [
 
-    'transaction' => 'Transakcja',
-    'material' => 'Materiał',
-    'buy' => 'Kup',
-    'sell' => 'Sprzedaj',
-    'priceKg' => 'Cena za jednostkę w $/kg',
-    'quantityKg' => 'Ilość w kg',
-    'totalWeight' => 'Całkowita waga',
-    'totalPrice' => 'Całkowita cena',
+    'transaction' => 'Transaction',
+    'material' => 'Material',
+    'buy' => 'Buy',
+    'sell' => 'Sell',
+    'priceKg' => 'Price per unit in $/kg',
+    'quantityKg' => 'Quantity in kg',
+    'totalWeight' => 'Total weight',
+    'totalPrice' => 'Total price',
+    'save' => 'Save',
 
 ];

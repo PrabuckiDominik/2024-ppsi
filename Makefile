@@ -10,3 +10,6 @@ node:
 
 php:
 	@docker compose exec -it php bash
+
+migrate:
+	@docker compose exec php php artisan migrate

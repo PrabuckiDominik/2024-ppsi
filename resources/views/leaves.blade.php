@@ -8,7 +8,7 @@
     {{ __('leaves.endDate') }} <br>
     <input type="date" name="end_date" id="end_date">
     <br>
-    <input type="submit" name = "submit" value="Wypisz urlop">
+    <input type="submit" name = "submit" value="{{ __('leaves.enterLeave') }}">
 </form>
 
 <table>

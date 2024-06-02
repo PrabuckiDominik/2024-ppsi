@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    'listEmployees' => 'Employees List',
     'employee_data_updated' => 'Employee data updated successfully.',
     'employee_data_update' => 'Update data',
     'firstname' => 'First Name',

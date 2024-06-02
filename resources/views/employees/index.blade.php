@@ -1,4 +1,4 @@
-Lista pracowników
+{{ __('employees.listEmployees') }}
 
 <table>
     <tr>

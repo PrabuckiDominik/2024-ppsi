@@ -7,4 +7,5 @@ return [
     'endDate' => 'Data zakończenia',
     'firstnameAndLastname' => 'Imie i nazwisko',
     'cancelLeave' => 'Anuluj urlop',
+    'enterLeave' => "Wpisz urlop",
 ];
