@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class StatisticsController extends Controller
 {
     public function index(){
-       
+
         $materials = $this->getMaterialsStatistics();
         $employeesCount = Employee::count();
 
@@ -32,11 +33,11 @@ class StatisticsController extends Controller
                 [
                     'API' => "Couldnt load data from API"
                 ]
-            );; 
+            );;
         }
     }
     public function statistics(){
-        
+
         $materials = $this->getMaterialsStatistics();
         $employeesCount = Employee::count();
         return [
@@ -50,10 +51,10 @@ class StatisticsController extends Controller
     }
     public function getMaterialsStatistics(){
         $totalPurchaseCost = Transaction::where('type', 'buy')
-            ->sum(\DB::raw('"pricePerUnit" * "quantity"'));
+            ->sum(DB::raw('"pricePerUnit" * "quantity"'));
         $totalSellCost = Transaction::where('type', 'sell')
-            ->sum(\DB::raw('"pricePerUnit" * "quantity"'));
-        $totalQuantityByType = Transaction::select('type', \DB::raw('SUM(quantity) as total_quantity'))
+            ->sum(DB::raw('"pricePerUnit" * "quantity"'));
+        $totalQuantityByType = Transaction::select('type', DB::raw('SUM(quantity) as total_quantity'))
             ->groupBy('type')
             ->get();
         $soldQuantity = $totalQuantityByType->where('type', 'sell')->sum('total_quantity');

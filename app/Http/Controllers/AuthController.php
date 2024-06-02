@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeMail;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
-
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -31,7 +32,7 @@ class AuthController extends Controller
             Log::channel('auth')->info($validated['email'] . ' (ID:' . auth()->id() . ') Logged in');
             return redirect()->route('dashboard')->with('success', 'Logged in');
         }
-        
+
         Log::channel('auth')->info($validated['email'] . ' Failed to log in');
         return redirect()->route('login')->withErrors(
             [
@@ -65,6 +66,8 @@ class AuthController extends Controller
             'email' =>$validated['email'],
             'password' => Hash::make($validated['password'])
          ]);
+
+         Mail::to($user->email)->send(new WelcomeMail($user));
 
          return redirect()->route('dashboard')->with('success', 'Account created Successfully!');
     }
