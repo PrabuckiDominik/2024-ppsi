@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\CommodityController;
 use App\Http\Controllers\LaunguageController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\LeaveController;
@@ -15,7 +14,7 @@ Route::post('/switch-language', [LaunguageController::class, 'switchLanguage'])-
 
 Route::resource('leaves', LeaveController::class)
     ->only(['index', 'store', 'destroy'])
-    ->middleware(['auth', 'verificated']); 
+    ->middleware(['auth', 'verificated']);
 
 Route::get('/', function () {
     return view('index');
@@ -30,13 +29,13 @@ Route::get('/notVerificated', function () {
 
 Route::resource('employees', EmployeesController::class)
     ->only(['index', 'store', 'show', 'destroy', 'edit', 'update'])
-    ->middleware(['auth', 'verificated']); 
+    ->middleware(['auth', 'verificated']);
 Route::get('employees/{id}/create', [EmployeesController::class, 'create_from_user'])->name('employees.create_from_user');
-    
+
 Route::resource('transactions', TransactionsController::class)
     ->only(['index', 'store'])
-    ->middleware(['auth', 'verificated']); 
-    
+    ->middleware(['auth', 'verificated']);
+
 Route::get('/statistics', [StatisticsController::class, 'index'])
     ->name('statistics.index')
     ->middleware(['auth', 'verificated']); 

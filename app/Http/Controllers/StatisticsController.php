@@ -6,9 +6,9 @@ use App\Models\Employee;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class StatisticsController extends Controller
@@ -77,6 +77,8 @@ class StatisticsController extends Controller
         $totalPurchaseCost = Transaction::where('type', 'buy')
             ->sum(DB::raw('"pricePerUnit" * "quantity"'));
         $totalSellCost = Transaction::where('type', 'sell')
+            ->sum(DB::raw('"pricePerUnit" * "quantity"'));
+        $totalQuantityByType = Transaction::select('type', DB::raw('SUM(quantity) as total_quantity'))
             ->sum(DB::raw('"pricePerUnit" * "quantity"'));
         $totalQuantityByType = Transaction::select('type', DB::raw('SUM(quantity) as total_quantity'))
             ->groupBy('type')

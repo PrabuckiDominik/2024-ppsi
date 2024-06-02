@@ -28,8 +28,10 @@
                     <input type="date" name="end_date" id="end_date" class="block border border-gray-300 rounded-md w-full">
                 </div>
                 <div>
-                    <input type="submit" name="submit" value="{{ __('leaves.enterLeave') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <input type="submit" name="submit" value="{{ __('leaves.enterLeave') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-right">
+                    <br>
                 </div>
+                
             </form>
 
             <table class="w-full border-collapse border border-gray-300 mt-8 text-center odd:bg-gray-400">
@@ -47,18 +49,24 @@
                         <td class="border border-gray-300">{{ $leave->user ? $leave->user->name : '---' }}</td>
                         <td class="border border-gray-300">{{ $leave->start_date }}</td>
                         <td class="border border-gray-300">{{ $leave->end_date }}</td>
-                        <td class="border border-gray-300 flex justify-center items-center"> <!-- Added styling here -->
+                        <td class="border border-gray-300 flex justify-center items-center">
                             <form method="POST" action="{{ route('leaves.destroy', $leave->id) }}">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">X</button>
                             </form>
+                            
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-            
+
+            @if (session('success'))
+            <div class="mt-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                <strong class="font-bold">{{ session('success') }}</strong>
+            </div>
+            @endif
             
         </div>
     </div>
