@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
+use App\Mail\VerifyMail;
 use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class EmployeesController extends Controller
 {
@@ -24,7 +26,7 @@ class EmployeesController extends Controller
     }
 
     public function create_from_user($userId){
-        
+
         $employee = (object)[
             'user_id' => $userId,
             'firstname' => "",
@@ -43,21 +45,22 @@ class EmployeesController extends Controller
         ];
         return view('employees.create', compact('employee'));
     }
-    
-    public function store(CreateEmployeeRequest $request){  
-        $validated = $request->validated();
-        Employee::create($validated);
 
+    public function store(CreateEmployeeRequest $request){
+        $validated = $request->validated();
+        $employee = Employee::create($validated);
+        Mail::to($employee-> user ->email)->send(new VerifyMail($employee));
         return redirect()->route('employees.index')->with('success', 'Wprowadzono dane pracownika');
-        
+
     }
-    
+
+
     public function destroy(CreateEmployeeRequest $request){
         $validated = $request->validated();
         Employee::create($validated);
 
         return redirect()->route('employees.index')->with('success', 'Wprowadzono dane pracownika');
-        
+
     }
     public function update(UpdateEmployeeRequest $request, Employee $employee){
         Log::channel('activities')->info(auth()->user()->email .' (ID:' . auth()->id() . ') edited user: ' . $employee->firstname . ' ' . $employee->lastname . ' (ID: ' . $employee->id . ')');
