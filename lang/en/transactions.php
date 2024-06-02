@@ -10,5 +10,6 @@ return [
     'quantityKg' => 'Quantity in kg',
     'totalWeight' => 'Total weight',
     'totalPrice' => 'Total price',
+    'save' => 'Save',
 
 ];

@@ -18,7 +18,7 @@
     <input type="number" step=0.01 name="pricePerUnit" id="pricePerUnit"><br>
     {{ __('transactions.quantityKg') }} <br>
     <input type="number" step=0.01 name="quantity" id="quantity"><br>
-    <input type="submit" value="Zapisz">
+    <input type="submit" value="{{ __('transactions.save') }}">
 </form>
 
 <table>

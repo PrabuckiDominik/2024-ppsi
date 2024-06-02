@@ -10,4 +10,5 @@ return [
     'quantityKg' => 'Ilość w kg',
     'totalWeight' => 'Całkowita waga',
     'totalPrice' => 'Całkowita cena',
+    'save' => 'Zapisz',
 ];
