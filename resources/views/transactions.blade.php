@@ -1,5 +1,11 @@
 @include('shared.return-message')
+@extends('shared.layout')
 
+@section('title')
+{{ __('transactions.transaction') }}
+@endsection
+
+@section('content')
 <form action="{{ route('transactions.store') }}" method="post">
     @csrf
     {{ __('transactions.material') }} <br>
@@ -39,3 +45,4 @@
         </tr>
     @endforeach
 </table>
+@endsection
