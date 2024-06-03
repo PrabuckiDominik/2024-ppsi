@@ -21,6 +21,7 @@
         <div>
             <label for="password" class="block text-sm font-medium text-gray-700"> {{__('auth.passwordInput')}}  </label>
             <input type="password" name="password" id="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <a href="{{ route('forgot_password') }}" class=" right-2 text-indigo-600 hover:text-indigo-800 text-sm font-medium">{{__('auth.forgotPassword')}}</a><br>
             @error('password')
                 <span class="text-red-300 text-sm">{{ $message }}</span>
             @enderror
