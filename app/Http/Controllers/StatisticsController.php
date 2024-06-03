@@ -53,10 +53,15 @@ class StatisticsController extends Controller
             ]);
             if ($response->successful()) {
                 $json = $response->json();
-                if(array_key_exists('Information', $json)){
-                    return $this::DEFAULT_JSON;
+                if(
+                    array_key_exists('name', $json) &&
+                    array_key_exists('interval', $json) &&
+                    array_key_exists('unit', $json) &&
+                    array_key_exists('data', $json)
+                ){
+                        return $json;
                 }
-                return $json;
+                return $this::DEFAULT_JSON;
             }
             
             return $this::DEFAULT_JSON;
