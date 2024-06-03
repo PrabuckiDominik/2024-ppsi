@@ -29,5 +29,6 @@ return [
     'existingAccountPrmopt' => 'Masz już konto? Zaloguj się.',
     'notExistingAccountPrmopt' => 'Nie masz konta? Zarejestruj się.',
     'forgotPassword' => "Zapomniałeś, hasła?",
+    'forgotPasswordHeader' => "Zmiana hasła"
 
 ];
