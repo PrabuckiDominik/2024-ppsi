@@ -1,8 +1,10 @@
-<h1>Hello {{$user ->name}} </h1>
+<h1>Hello</h1>
 <p>You recently requested to reset your password.</p>
-Change my password
+<p>Change my password</p>
 
-If you didn't request this, please ignore this email.
+<p> <a href="{{$link}}">{{$link}}</a></p>
 
-Your password won't change until you access the link above and create a new one.
+<p>If you didn't request this, please ignore this email.</p>
+
+<p>Your password won't change until you access the link above and create a new one.</p>
 

@@ -7,6 +7,7 @@ return [
     'or' => 'lub',
     'mainPage' => 'Strona Główna',
     'hide' => 'Ukryj',
+    'show' => 'Pokaż',
 
 
 
