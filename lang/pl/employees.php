@@ -2,6 +2,7 @@
 
 return [
 
+    'listEmployees' => 'Lista Pracowników',
     'employee_data_updated' => 'Te dane uwierzytelniające nie pasują do naszych rekordów.',
     'employee_data_update' => 'Zaktualizuj dane',
     'firstname' => 'Imie',
@@ -20,4 +21,9 @@ return [
     'updateEmployeeData' => 'Aktualizuj dane pracownika',
     'edit' => 'Edytuj',
     'employees' => 'Pracownicy',
+    'employeesEdit' => 'Edytuj pracownika',
+    'email' => 'Email',
+    'name' => 'Nazwa',
+    'verify' => 'Weryfikuj',
+    'unverifiedUsers' => 'Nie zweryfikowanie użytkownicy',
 ];

@@ -22,6 +22,13 @@ return [
     'loggedInAs' => 'Zalogowany jako',
     'logout' => 'Wyloguj',
     'login' => 'Zaloguj się',
+    'loginHeader' => 'Zaloguj Się',
     'register' => 'Zarejestruj się',
+    'username' => 'Nazwa użytkownika',
+    'back' => 'Powrót',
+    'existingAccountPrmopt' => 'Masz już konto? Zaloguj się.',
+    'notExistingAccountPrmopt' => 'Nie masz konta? Zarejestruj się.',
+    'forgotPassword' => "Zapomniałeś, hasła?",
+    'forgotPasswordHeader' => "Zmiana hasła"
 
 ];

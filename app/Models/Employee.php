@@ -26,7 +26,7 @@ class Employee extends Model
         'city',
         'zipCode',
         'street',
-        'buildingName',
+        'buildingNumber',
         'apartmentNumber',
         'position_id',
         'dateOfBirth',

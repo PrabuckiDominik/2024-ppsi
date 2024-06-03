@@ -7,4 +7,5 @@ return [
     'endDate' => 'End date',
     'firstnameAndLastname' => 'Name',
     'cancelLeave' => 'Cancel leave',
+    'enterLeave' => "Enter leave",
 ];
