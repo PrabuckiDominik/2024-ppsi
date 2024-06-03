@@ -14,6 +14,18 @@ use Illuminate\Support\Facades\Session;
 class StatisticsController extends Controller
 {
     protected const TWO_HOUR_IN_SECOND = 7200;
+    protected const DEFAULT_JSON = [
+        'defaultValues' => true,
+        'name' => 'Price of aluminum',
+        'interval' => 'Month',
+        'unit' => 'Metric tone',
+        'data' => [
+            [
+                'date' => '01.06.2024',
+                'value' => '2501'
+            ]
+        ]
+    ];
     public function index(){
         $data = $this->statistics();
         $json = $data->json;
@@ -27,7 +39,10 @@ class StatisticsController extends Controller
     public function statistics(){
         $materials = $this->getMaterialsStatistics();
         $employeesCount = Employee::count();
+        Cache::forget('aluminum');
+        
         $json = Cache::remember('aluminum', $this::TWO_HOUR_IN_SECOND, function () {
+            
             $apiKey = env('ALPHA_VANTAGE_API_KEY');
             $baseUrl = 'https://www.alphavantage.co/query';
             
@@ -39,21 +54,12 @@ class StatisticsController extends Controller
             if ($response->successful()) {
                 $json = $response->json();
                 if(array_key_exists('Information', $json)){
-                    return [
-                        'defaultValues' => true,
-                        'name' => 'Price of aluminum',
-                        'interval' => 'Month',
-                        'unit' => 'Metric tone',
-                        'data' => [
-                            [
-                                'date' => '01.06.2024',
-                                'value' => '2501'
-                            ]
-                        ]
-                    ];
+                    return $this::DEFAULT_JSON;
                 }
                 return $json;
             }
+            
+            return $this::DEFAULT_JSON;
         });
         return (object)[
             'materials' => $materials,
