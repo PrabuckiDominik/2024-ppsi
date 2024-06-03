@@ -5,6 +5,8 @@
 {{ __('leaves.leaves') }}
 @endsection
 
+@auth
+    
 
 @section('content')
         <div class="space-y-6">
@@ -19,7 +21,7 @@
                     <input type="date" name="end_date" id="end_date" class="block border border-gray-300 rounded-md w-full">
                 </div>
                 <div>
-                    <input type="submit" name="submit" value="{{ __('leaves.enterLeave') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-right">
+                    <input type="submit" name="submit" value="{{ __('leaves.enterLeave') }}" class="bg-indigo-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded float-right">
                     <br>
                 </div>
                 
@@ -44,7 +46,7 @@
                             <form method="POST" action="{{ route('leaves.destroy', $leave->id) }}">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">X</button>
+                                <button type="submit" class="bg-red-600 hover:bg-red-00 text-white font-bold py-1 px-2 rounded">X</button>
                             </form>
                             
                         </td>
@@ -54,11 +56,11 @@
             </table>
 
             @if (session('success'))
-            <div class="mt-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <div class="mt-4 bg-green-100 border border-green-600 text-green-700 px-4 py-3 rounded relative" role="alert">
                 <strong class="font-bold">{{ session('success') }}</strong>
             </div>
             @endif
             
         </div>
-
+        @endauth
 @endsection

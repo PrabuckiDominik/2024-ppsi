@@ -21,6 +21,9 @@ return [
     'updateEmployeeData' => 'Aktualizuj dane pracownika',
     'edit' => 'Edytuj',
     'employees' => 'Pracownicy',
+    'employeesEdit' => 'Edytuj pracownika',
     'email' => 'Email',
     'name' => 'Nazwa',
+    'verify' => 'Weryfikuj',
+    'unverifiedUsers' => 'Nie zweryfikowanie użytkownicy',
 ];

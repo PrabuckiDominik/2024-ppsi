@@ -12,7 +12,7 @@
             <h1 class="text-2xl font-bold mb-4 text-center">{{ __('mainpage.appName') }}</h1>
             <p class="mb-4 text-gray-700 text-center">{{ __('mainpage.toAccess') }}</p>
             <div class="space-y-4">
-                <a href="{{ route('login') }}" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <a href="{{ route('login') }}" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-800 hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     {{ __('auth.login') }}
                 </a>
                 <p class="mb-4 text-gray-700 text-center">{{ __('mainpage.or') }}</p>

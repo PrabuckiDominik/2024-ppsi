@@ -18,7 +18,7 @@
             </div>
             <form action="{{ route('logout') }}" method="post">
                 @csrf
-                <button type="submit" class="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">{{ __('auth.logout') }}</button>
+                <button type="submit" class="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-800 hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">{{ __('auth.logout') }}</button>
             </form>
         </div>
     </nav>
@@ -50,7 +50,7 @@
     </script>
     
     <div class="min-h-full flex justify-center">
-        <div class="w-full max-w-4xl bg-white shadow-md rounded p-10 relative min-h-screen sm:min-h-full">
+        <div class="w-full max-w-6xl bg-white shadow-md rounded p-10 relative min-h-screen sm:min-h-full">
             <div class="absolute top-2 right-6 py-5">
                 <form action="{{ route('lang.switch', 'en') }}" method="post" class="inline-block">
                     @csrf

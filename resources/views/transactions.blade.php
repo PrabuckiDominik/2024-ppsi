@@ -32,7 +32,7 @@
                 <input type="number" step="0.01" name="quantity" id="quantity" class="block border border-gray-300 rounded-md w-full">
             </div>
             <div>
-                <input type="submit" value="{{ __('transactions.save') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded float-right">
+                <input type="submit" value="{{ __('transactions.save') }}" class="bg-indigo-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded float-right">
                 <br>
             </div>
         </form>
@@ -60,7 +60,7 @@
             </tbody>
         </table>
         @if (session('success'))
-            <div class="mt-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <div class="mt-4 bg-green-100 border border-green-600 text-green-700 px-4 py-3 rounded relative" role="alert">
                 <strong class="font-bold">{{ session('success') }}</strong>
             </div>
             @endif
