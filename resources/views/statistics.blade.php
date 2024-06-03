@@ -97,7 +97,7 @@
             </tr>
             <tr>
                 <td class="border px-4 py-4">{{ __('statistics.value') }}</td>
-                <td class="border px-4 py-4"><div id="value">{{$data->json['data'][0]['value']}} $</div></td>
+                <td class="border px-4 py-4"><div id="value">{{$data->json['data'][0]['value']}} $/t</div></td>
             </tr>
             <tr>
                 <td class="border px-4 py-4">{{ __('statistics.total_purchase_cost') }}</td>
