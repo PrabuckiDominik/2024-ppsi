@@ -55,17 +55,19 @@
             </thead>
             <tbody>
                 @foreach ($employees as $employee)
-                <tr>
-                    <td class="border border-gray-300">{{ $employee->buildingNumber }}</td>
-                    <td class="border border-gray-300">{{ $employee->apartmentNumber }}</td>
-                    <td class="border border-gray-300">{{ $employee->position->name }}</td>
-                    <td class="border border-gray-300">{{ $employee->dateOfBirth }}</td>
-                    <td class="border border-gray-300">{{ $employee->hireDate }}</td>
-                    <td class="border border-gray-300">{{ $employee->user->email }}</td>
-                    <td class="border border-gray-300">
-                        <a href="{{ route('employees.edit', $employee) }}" class="max-h-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-700 hover:bg-green-800">{{ __('employees.edit') }}</a>
-                    </td>
-                </tr>
+                @if($employee->user->role == "user")
+                    <tr>
+                        <td class="border border-gray-300">{{ $employee->buildingNumber }}</td>
+                        <td class="border border-gray-300">{{ $employee->apartmentNumber }}</td>
+                        <td class="border border-gray-300">{{ $employee->position->name }}</td>
+                        <td class="border border-gray-300">{{ $employee->dateOfBirth }}</td>
+                        <td class="border border-gray-300">{{ $employee->hireDate }}</td>
+                        <td class="border border-gray-300">{{ $employee->user->email }}</td>
+                        <td class="border border-gray-300">
+                            <a href="{{ route('employees.edit', $employee) }}" class="max-h-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-700 hover:bg-green-800">{{ __('employees.edit') }}</a>
+                        </td>
+                    </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>
@@ -84,14 +86,16 @@
             </thead>
             <tbody>
                 @foreach ($unverifiedUsers as $unverifiedUser)
-                <tr>
-                    <td class="border border-gray-300">{{ $unverifiedUser->id }}</td>
-                    <td class="border border-gray-300">{{ $unverifiedUser->name }}</td>
-                    <td class="border border-gray-300">{{ $unverifiedUser->email }}</td>
-                    <td class="border border-gray-300">
-                        <a href="{{ route('employees.create_from_user', $unverifiedUser->id) }}" class="max-h px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-700 hover:bg-green-800">{{ __('employees.verify') }}</a>
-                    </td>
-                </tr>
+                    @if($unverifiedUser->role == "user")
+                    <tr>
+                        <td class="border border-gray-300">{{ $unverifiedUser->id }}</td>
+                        <td class="border border-gray-300">{{ $unverifiedUser->name }}</td>
+                        <td class="border border-gray-300">{{ $unverifiedUser->email }}</td>
+                        <td class="border border-gray-300">
+                            <a href="{{ route('employees.create_from_user', $unverifiedUser->id) }}" class="max-h px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-700 hover:bg-green-800">{{ __('employees.verify') }}</a>
+                        </td>
+                    </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>
