@@ -17,7 +17,7 @@ class PasswordResetMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(private User $user)
+    public function __construct(private string $link)
     {
         //
     }
@@ -38,7 +38,10 @@ class PasswordResetMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.password-reset-email',
+            with: [
+                'link' => $this -> link
+            ]
         );
     }
 

@@ -39,7 +39,11 @@
                 <tbody>
                     @foreach ($leaves as $leave)
                     <tr>
-                        <td class="border border-gray-300">{{ $leave->user ? $leave->user->name : '---' }}</td>
+                        @if(isset($usersNames[$leave->user->id]))
+                            <td class="border border-gray-300">{{ $usersNames[$leave->user->id]['firstname'] }} {{ $usersNames[$leave->user->id]['lastname'] }}</td>
+                        @else
+                            <td class="border border-gray-300">{{ $leave->user ? $leave->user->name : '---' }}</td>
+                        @endif
                         <td class="border border-gray-300">{{ $leave->start_date }}</td>
                         <td class="border border-gray-300">{{ $leave->end_date }}</td>
                         <td class="border border-gray-300 flex justify-center items-center">
@@ -54,12 +58,6 @@
                     @endforeach
                 </tbody>
             </table>
-
-            @if (session('success'))
-            <div class="mt-4 bg-green-100 border border-green-600 text-green-700 px-4 py-3 rounded relative" role="alert">
-                <strong class="font-bold">{{ session('success') }}</strong>
-            </div>
-            @endif
             
         </div>
         @endauth

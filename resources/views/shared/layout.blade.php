@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,10 +43,10 @@
             var hideButton = document.getElementById('hideButton');
             if (navbar.style.display === 'none') {
                 navbar.style.display = 'block';
-                hideButton.textContent = '{{ __('Hide') }}';
+                hideButton.textContent = "{{ __('mainpage.hide') }}";
             } else {
                 navbar.style.display = 'none';
-                hideButton.textContent = '{{ __('Show') }}';
+                hideButton.textContent = "{{ __('mainpage.show') }}";
             }
         });
     </script>

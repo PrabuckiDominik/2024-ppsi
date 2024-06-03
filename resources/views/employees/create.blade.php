@@ -61,8 +61,13 @@
                         <td><input type="text" name="street" id="street" value="{{ $employee->street }}" class="block border border-gray-300 rounded-md w-full py-4"></td>
                         <td><input type="number" name="buildingNumber" id="buildingNumber" value="{{ $employee->buildingNumber }}" class="block border border-gray-300 rounded-md w-full py-4"></td>
                         <td><input type="number" name="apartmentNumber" id="apartmentNumber" value="{{ $employee->apartmentNumber }}" class="block border border-gray-300 rounded-md w-full py-4"></td>
-                        <td><input type="text" name="position_id" id="position_id" value="{{ $employee->position_id }}" class="block border border-gray-300 rounded-md w-full py-4"></td>
-                        <td><input type="date" name="dateOfBirth" id="dateOfBirth" value="{{ $employee->dateOfBirth }}" class="block border border-gray-300 rounded-md w-full "></td>
+                        <td>
+                            <select name="position_id" id="position_id" class="block border border-gray-300 rounded-md w-full">
+                                @foreach ($positions as $position)
+                                    <option value="{{$position->id}}" {{( $employee->position_id == $position->id)? "selected" : ""}}>{{$position->name}}</option>
+                                @endforeach
+                            </select>
+                        </td>                        <td><input type="date" name="dateOfBirth" id="dateOfBirth" value="{{ $employee->dateOfBirth }}" class="block border border-gray-300 rounded-md w-full "></td>
                         <td><input type="date" name="hireDate" id="hireDate" value="{{ $employee->hireDate }}" class="block border border-gray-300 rounded-md w-full "></td>
                     </tr>
                 </tbody>
