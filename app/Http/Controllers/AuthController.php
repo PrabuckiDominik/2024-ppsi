@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -53,22 +54,27 @@ class AuthController extends Controller
     }
 
     public function store(){
-        $validated = request()->validate(
-            [
+        $rules = [
                 'name' => 'required|min:3|max:40',
                 'email' => 'required|email|unique:users,email',
                 'password' => 'required|confirmed|min:8'
-            ]
-            );
-
-         $user = User::create([
-            'name' => $validated['name'],
-            'email' =>$validated['email'],
-            'password' => Hash::make($validated['password'])
-         ]);
-
-         Mail::to($user->email)->send(new WelcomeMail($user));
-
-         return redirect()->route('dashboard')->with('success', 'Account created Successfully!');
+        ];
+        $validator = Validator::make(request()->all(), $rules);
+        if($validator->fails()){
+            if(!$validator->getMessageBag()->has('email')){
+                return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();          
+            }
+        }else{
+            $validated = $validator->validated();
+            $user = User::create([
+                'name' => $validated['name'],
+                'email' =>$validated['email'],
+                'password' => Hash::make($validated['password'])
+            ]);
+            Mail::to($user->email)->send(new WelcomeMail($user));
+        }
+         return redirect()->route('dashboard')->with('success', 'If everything went well, you will soon receive an e-mail confirming your registration');
     }
 }
