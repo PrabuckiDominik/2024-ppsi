@@ -28,5 +28,6 @@ return [
     'back' => 'Back',
     'existingAccountPrmopt' => 'Already got an account? Log in.',
     'notExistingAccountPrmopt' => "Don't have an account? Register.",
+    'forgotPasswordHeader' => "Change password"
 
 ];

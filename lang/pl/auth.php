@@ -28,5 +28,6 @@ return [
     'back' => 'Powrót',
     'existingAccountPrmopt' => 'Masz już konto? Zaloguj się.',
     'notExistingAccountPrmopt' => 'Nie masz konta? Zarejestruj się.',
+    'forgotPasswordHeader' => "Zmiana hasła"
 
 ];

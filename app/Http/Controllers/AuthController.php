@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GenerateTokenRequest;
+use App\Mail\PasswordResetMail;
 use App\Mail\WelcomeMail;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Support\Env;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+
 
 class AuthController extends Controller
 {
@@ -76,5 +83,54 @@ class AuthController extends Controller
             Mail::to($user->email)->send(new WelcomeMail($user));
         }
          return redirect()->route('dashboard')->with('success', 'If everything went well, you will soon receive an e-mail confirming your registration');
+    }
+
+    public function forgot_password(){
+        return view('auth.forgot_password');
+    }
+    public function sendPasswordResetToken(GenerateTokenRequest $request){    
+        $email = $request->email;
+        $user = User::where('email', $email)->first();
+        if($user){
+            DB::table('password_reset_tokens')->where('email', $email)->delete();
+            $token = Str::random(48);
+            DB::table('password_reset_tokens')->insert([
+                'email' =>$request->email,
+                'token' => $token,
+                'created_at' => Carbon::now()
+            ]);
+            $link = Env('APP_URL') . '/restart-password/' . $token;
+            Mail::to($email)->send(new PasswordResetMail($link));
+        }
+        return redirect()->route('forgot_password')->with('success', 'If everything went well, you will soon receive an e-mail with link to restart your passowrd');
+    }
+    public function restartPassword($token){
+        return view('auth.restart_password', compact('token'));
+    }
+    public function changePassword($token){
+        $rules = [
+                'password' => 'required|confirmed|min:8'
+        ];
+        $validator = Validator::make(request()->all(), $rules);
+        if($validator->fails()){
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();       
+        }
+        $validated = $validator->validated();
+        $password = $validated['password'];
+        
+        $tokenData = DB::table('password_reset_tokens')
+        ->where('token', $token)->first();
+   
+        $user = User::where('email', $tokenData->email)->first();
+        if ( !$user ) return redirect()->route('dashboard')->with('error', 'failed to change password');
+   
+        $user->password = Hash::make($password);
+        $user->update();
+
+        DB::table('password_reset_tokens')->where('email', $user->email)->delete();
+        
+         return redirect()->route('dashboard')->with('success', 'password change completed successfully');
     }
 }
