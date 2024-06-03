@@ -3,14 +3,15 @@
 @extends('shared.layout')
 
 @section('title')
-{{ __('employees.employeesEdit') }}
+{{ __('employees.employees') }}
 @endsection
+
 
 @section('content')
 @auth
 
 <div class="space-y-6">
-    <h1 class="text-2xl font-bold">{{ __('employees.employeesEdit') }}</h1>
+    <h1 class=" text-2xl bold font-bold">{{ __('employees.employeesEdit') }}</h1>
     <form action="{{ route('employees.update', $employee->id) }}" method="post" class="space-y-4">
         @csrf
         @method('put')
@@ -35,7 +36,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="text" name="firstname" id="firstname" value="{{ $employee->firstname }}" class="block border border-gray-300 rounded-md w-full"></td>
+                        <td><label id="firstnameLabel" for="firstname"> <input type="text" name="firstname" aria-labelledby="firstnameLable" id="firstname" value="{{ $employee->firstname }}" class="block border border-gray-300 rounded-md w-full"></td>
                         <td><input type="text" name="lastname" id="lastname" value="{{ $employee->lastname }}" class="block border border-gray-300 rounded-md w-full"></td>
                         <td><input type="text" name="gender" id="gender" value="{{ $employee->gender }}" class="block border border-gray-300 rounded-md w-full"></td>
                         <td><input type="text" name="phoneNumber" id="phoneNumber" value="{{ $employee->phoneNumber }}" class="block border border-gray-300 rounded-md w-full"></td>
@@ -52,8 +53,11 @@
                 </tbody>
             </table>
         </div>
-        <div class="flex justify-end">
-            <button type="submit" class="bg-indigo-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded">{{ __('employees.employee_data_update') }}</button>
+        <div class="flex justify-end px-2">
+            <button type="submit" class="bg-indigo-800 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded ml-3">{{ __('employees.employee_data_update') }}</button>
+            <a href="{{ route('employees.index') }}" class=" ml-3 justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-700 hover:bg-green-800">
+                {{__('auth.back')}} 
+            </a>
         </div>
     </form>
 

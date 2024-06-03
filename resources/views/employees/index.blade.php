@@ -8,7 +8,7 @@
 @auth
 @section('content')
 <div class="space-y-6">
-    <h1>{{ __('employees.listEmployees') }}</h1>
+    <h1 class="text-2xl font-bold">{{ __('employees.listEmployees') }}</h1>
     <div class="overflow-auto">
         <table class="w-full border-collapse border border-gray-300 mt-8 text-center odd:bg-gray-400 min-w-max">
             <thead>
@@ -41,7 +41,7 @@
     </div>
 
     <div class="overflow-auto mt-6">
-        <table class="w-full border-collapse border border-gray-300 mt-8 text-center odd:bg-gray-400 min-w-max">
+        <table class="w-full border-collapse border border-gray-300 mt-8 text-center min-w-max">
             <thead>
                 <tr>
                     <th class="border border-gray-300 bg-gray-500 text-white">{{ __('employees.buildingNumber') }}</th>
@@ -63,7 +63,7 @@
                     <td class="border border-gray-300">{{ $employee->hireDate }}</td>
                     <td class="border border-gray-300">{{ $employee->user->email }}</td>
                     <td class="border border-gray-300">
-                        <a href="{{ route('employees.edit', $employee) }}" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">{{ __('employees.edit') }}</a>
+                        <a href="{{ route('employees.edit', $employee) }}" class="max-h-1 px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-700 hover:bg-green-800">{{ __('employees.edit') }}</a>
                     </td>
                 </tr>
                 @endforeach
@@ -71,15 +71,15 @@
         </table>
     </div>
 
-    <h2 class="mt-8">{{ __('employees.unverifiedUsers') }}</h2>
+    <h1 class="text-2xl font-bold">{{ __('employees.unverifiedUsers') }}</h2>
     <div class="overflow-auto">
-        <table class="w-full border-collapse border border-gray-300 mt-8 text-center odd:bg-gray-400 min-w-max">
+        <table class="w-full border-collapse border border-gray-300 mt-8 text-center min-w-max">
             <thead>
                 <tr>
                     <th class="border border-gray-300 bg-gray-500 text-white">ID</th>
                     <th class="border border-gray-300 bg-gray-500 text-white">{{ __('employees.name') }}</th>
                     <th class="border border-gray-300 bg-gray-500 text-white">{{ __('employees.email') }}</th>
-                    <th class="border border-gray-300 bg-gray-500 text-white">{{ __('employees.edit') }}</th>
+                    <th class="border border-gray-300 bg-gray-500 text-white" style="width: 100px;">{{ __('employees.verify') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -89,7 +89,7 @@
                     <td class="border border-gray-300">{{ $unverifiedUser->name }}</td>
                     <td class="border border-gray-300">{{ $unverifiedUser->email }}</td>
                     <td class="border border-gray-300">
-                        <a href="{{ route('employees.create_from_user', $unverifiedUser->id) }}" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">{{ __('employees.verify') }}</a>
+                        <a href="{{ route('employees.create_from_user', $unverifiedUser->id) }}" class="max-h px-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-700 hover:bg-green-800">{{ __('employees.verify') }}</a>
                     </td>
                 </tr>
                 @endforeach
