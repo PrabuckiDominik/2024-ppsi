@@ -39,7 +39,6 @@ class StatisticsController extends Controller
     public function statistics(){
         $materials = $this->getMaterialsStatistics();
         $employeesCount = Employee::count();
-        Cache::forget('aluminum');
         
         $json = Cache::remember('aluminum', $this::TWO_HOUR_IN_SECOND, function () {
             
