@@ -6,6 +6,7 @@ use App\Http\Requests\CreateEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Mail\VerifyMail;
 use App\Models\Employee;
+use App\Models\Position;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -22,11 +23,13 @@ class EmployeesController extends Controller
     }
 
     public function edit(Employee $employee){
-        return view('employees.edit', compact('employee'));
+        $positions = Position::get();
+        return view('employees.edit', compact('employee', 'positions'));
     }
 
     public function create_from_user($userId){
 
+        $positions = Position::get();
         $employee = (object)[
             'user_id' => $userId,
             'firstname' => "",
@@ -43,7 +46,7 @@ class EmployeesController extends Controller
             'dateOfBirth' => "",
             'hireDate' => ""
         ];
-        return view('employees.create', compact('employee'));
+        return view('employees.create', compact('employee', 'positions'));
     }
 
     public function store(CreateEmployeeRequest $request){
