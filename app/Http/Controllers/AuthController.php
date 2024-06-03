@@ -66,23 +66,35 @@ class AuthController extends Controller
                 'email' => 'required|email|unique:users,email',
                 'password' => 'required|confirmed|min:8'
         ];
+
         $validator = Validator::make(request()->all(), $rules);
-        if($validator->fails()){
-            if(!$validator->getMessageBag()->has('email')){
-                return redirect()->back()
-                    ->withErrors($validator)
-                    ->withInput();          
-            }
-        }else{
-            $validated = $validator->validated();
-            $user = User::create([
-                'name' => $validated['name'],
-                'email' =>$validated['email'],
-                'password' => Hash::make($validated['password'])
-            ]);
-            Mail::to($user->email)->send(new WelcomeMail($user));
+
+        if($this->isEmailAlreadyTaken($validator)){
+            return redirect()->route('dashboard')->with('success', 'If everything went well, you will soon receive an e-mail confirming your registration');
         }
-         return redirect()->route('dashboard')->with('success', 'If everything went well, you will soon receive an e-mail confirming your registration');
+
+        if($validator->fails()){
+            $errors = $validator->getMessageBag();
+            
+            return redirect()->back()
+                ->withErrors($errors)
+                ->withInput();     
+        }
+
+        $validated = $validator->validated();
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' =>$validated['email'],
+            'password' => Hash::make($validated['password'])
+        ]);
+
+        Mail::to($user->email)->send(new WelcomeMail($user));
+
+        return redirect()->route('dashboard')->with('success', 'If everything went well, you will soon receive an e-mail confirming your registration');
+    }
+    public function isEmailAlreadyTaken(\Illuminate\Validation\Validator $validator):bool{
+        $errors = $validator->getMessageBag();
+        return $validator->fails() && $errors->get('email') && $errors->get('email')[0] == 'The email has already been taken.';
     }
 
     public function forgot_password(){
