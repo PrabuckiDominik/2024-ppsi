@@ -6,13 +6,15 @@
 {{ __('mainpage.mainPage') }}
 @endsection
 
-
 @section('content')
 @auth
 
         <div class="space-y-6">
             <div class="text-center mb-8">
                 <h1 class="text-3xl font-bold mb-4">{{ __('mainpage.hello') }} {{ Auth::user()->email }}!</h1>
+                <div class="flex justify-center">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="mr-2">
+                </div>
                 <h1 class="text-3xl font-bold">{{ __('mainpage.functionalities') }}</h1>
             </div>
             <div>
@@ -40,7 +42,6 @@
                 <p class="text-gray-700">{{ __('mainpage.identifyUserDescription') }}</p>
             </div>
         </div>
-
 
 @endauth
 @endsection
