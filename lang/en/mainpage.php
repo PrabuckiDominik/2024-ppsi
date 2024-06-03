@@ -7,6 +7,7 @@ return [
     'or' => 'or',
     'mainPage' => 'Main Page',
     'hide' => 'Hide',
+    'show' => 'Show',
 
 
 
