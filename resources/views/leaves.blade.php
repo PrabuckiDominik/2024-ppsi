@@ -39,7 +39,7 @@
                 <tbody>
                     @foreach ($leaves as $leave)
                     <tr>
-                        <td class="border border-gray-300">{{ $leave->user ? $leave->user->name : '---' }}</td>
+                        <td class="border border-gray-300">{{ $usersNames[$leave->user->id]['firstname'] }} {{ $usersNames[$leave->user->id]['lastname'] }}</td>
                         <td class="border border-gray-300">{{ $leave->start_date }}</td>
                         <td class="border border-gray-300">{{ $leave->end_date }}</td>
                         <td class="border border-gray-300 flex justify-center items-center">
