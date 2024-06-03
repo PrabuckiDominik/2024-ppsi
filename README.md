@@ -21,7 +21,7 @@ cp .env.example .env
 
 5. Zbuduj obrazy Dockera
 ```bash
-make dev
+make init
 ```
 
 6. Uruchom projekt
