@@ -41,10 +41,10 @@
             var hideButton = document.getElementById('hideButton');
             if (navbar.style.display === 'none') {
                 navbar.style.display = 'block';
-                hideButton.textContent = '{{ __('mainpage.hide') }}';
+                hideButton.textContent = "{{ __('mainpage.hide') }}";
             } else {
                 navbar.style.display = 'none';
-                hideButton.textContent = '{{ __('mainpage.show') }}';
+                hideButton.textContent = "{{ __('mainpage.show') }}";
             }
         });
     </script>
