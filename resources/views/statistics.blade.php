@@ -1,6 +1,7 @@
 @include('shared.return-message')
 @include('shared.guest-layout')
 @extends('shared.layout')
+{{Session::forget('error')}}
 
 @section('title')
 {{ __('statistics.statistics') }}
